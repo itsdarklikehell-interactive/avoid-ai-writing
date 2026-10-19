@@ -624,6 +624,18 @@ documentation with this repo's detector and publishes the result, including two
 defects the scan found in our own work. `npm run self-scan` reproduces it, and
 CI fails when a document drifts past its budget.
 
+## :film_projector: Development visualization
+
+Bekijk de [Gource development video](https://github.com/itsdarklikehell/avoid-ai-writing/releases) voor een visuele tijdlijn van de projectgeschiedenis.
+
+Om de video lokaal te genereren:
+```bash
+gource -1920x1080 --auto-skip-seconds 1 -o gource.ppm
+ffmpeg -y -r 60 -i gource.ppm -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p gource.mp4
+```
+
+De GitHub Actions workflow (`.github/workflows/gource.yml`) genereert de video automatisch bij elke release.
+
 ## House style is a different job
 
 This skill removes AI-writing tells. Enforcing a published style guide is the
