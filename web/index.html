@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avoid AI Writing — Detector</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-left">
+        <img src="icon.svg" alt="Logo" class="logo" />
+        <div>
+          <h1>Avoid AI Writing</h1>
+          <p class="subtitle">AI Pattern Detector — PWA</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" title="Toggle dark/light" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button id="install-btn" class="icon-btn" title="Install PWA" aria-label="Install app" style="display:none">
+          <span class="install-icon">⬇️</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="input-section">
+        <div class="section-header">
+          <h2>Input Text</h2>
+          <div class="input-actions">
+            <button id="btn-load-file" class="btn-secondary" title="Load from file">📂 Load File</button>
+            <button id="btn-paste" class="btn-secondary" title="Paste from clipboard">📋 Paste</button>
+            <button id="btn-clear" class="btn-secondary" title="Clear all">🗑️ Clear</button>
+          </div>
+        </div>
+        <textarea id="input-text" class="text-area" placeholder="Paste or type text here to detect AI writing patterns...
+
+Try pasting a paragraph from an AI-generated article, or write your own text and check for common AI tells."></textarea>
+        <div class="input-meta">
+          <span id="word-count">0 words</span>
+          <span id="char-count">0 chars</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="controls-row">
+          <label for="context-select">Context:</label>
+          <select id="context-select">
+            <option value="general">General</option>
+            <option value="technical">Technical</option>
+            <option value="marketing">Marketing</option>
+            <option value="personal">Personal</option>
+          </select>
+        </div>
+        <div class="controls-row">
+          <label for="source-mode">Source:</label>
+          <select id="source-mode">
+            <option value="plain">Plain text</option>
+            <option value="rendered-markdown">Rendered Markdown</option>
+          </select>
+        </div>
+        <button id="btn-analyze" class="btn-primary">Analyze</button>
+      </div>
+
+      <div id="results-section" class="results-section" style="display:none">
+        <div class="results-header">
+          <h2>Results</h2>
+          <div class="results-actions">
+            <button id="btn-download" class="btn-secondary">📥 Download Report</button>
+          </div>
+        </div>
+
+        <div class="score-cards">
+          <div class="score-card">
+            <div class="score-label">AI Score</div>
+            <div id="score-value" class="score-value">—</div>
+            <div id="score-bar" class="score-bar"><div class="score-fill"></div></div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">Verdict</div>
+            <div id="verdict" class="verdict">—</div>
+            <div id="verdict-detail" class="verdict-detail">—</div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">Patterns</div>
+            <div id="pattern-count" class="pattern-count">—</div>
+            <div id="severity-breakdown" class="severity-breakdown">—</div>
+          </div>
+        </div>
+
+        <div class="issues-section">
+          <h3>Detected Patterns</h3>
+          <div id="issues-list" class="issues-list"></div>
+        </div>
+
+        <div class="categories-section">
+          <h3>Category Breakdown</h3>
+          <div id="category-list" class="category-list"></div>
+        </div>
+      </div>
+
+      <div id="loading" class="loading" style="display:none">
+        <div class="spinner"></div>
+        <span>Analyzing...</span>
+      </div>
+
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <p>Enter text and click Analyze to detect AI writing patterns</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span>Avoid AI Writing Detector v3.37.0</span>
+      <span> • </span>
+      <span id="pwa-status">Checking PWA...</span>
+    </footer>
+  </div>
+
+  <script src="../detector/patterns.js"></script>
+  <script src="../detector/validate.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

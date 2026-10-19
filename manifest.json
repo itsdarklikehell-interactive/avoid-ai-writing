@@ -1,0 +1,19 @@
+{
+  "name": "Avoid AI Writing Detector",
+  "short_name": "AI Detector",
+  "description": "Progressive Web App for detecting AI writing patterns in text",
+  "start_url": "./web/index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f0f1a",
+  "theme_color": "#1a1a2e",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "web/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

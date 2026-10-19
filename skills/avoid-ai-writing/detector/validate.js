@@ -504,6 +504,11 @@ const AIDetectorValidate = (() => {
   return { validate, formatResult, maskCode, extractIndentedBlocks };
 })();
 
+// Browser global export for PWA / script-tag usage
+if (typeof globalThis !== 'undefined') {
+  globalThis.AIDetectorValidate = AIDetectorValidate;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = AIDetectorValidate;
 }

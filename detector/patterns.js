@@ -3438,6 +3438,11 @@ const AIDetector = (() => {
   };
 })();
 
+// Browser global export for PWA / script-tag usage
+if (typeof globalThis !== 'undefined') {
+  globalThis.AIDetector = AIDetector;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = AIDetector;
 }
